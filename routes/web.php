@@ -16,6 +16,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('products', [\App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
     Route::get('products/create', [\App\Http\Controllers\ProductsController::class, 'create'])
         ->can('create', Product::class)
         ->name('products.create');
@@ -38,8 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::get('checkout/failed/{payment_id}', [\App\Http\Controllers\CheckoutController::class, 'failed'])->name('checkout.failed');
     Route::get('checkout/{product}', [\App\Http\Controllers\CheckoutController::class, 'show'])->name('checkout.form');
 });
-
-Route::get('products', [\App\Http\Controllers\ProductsController::class, 'index'])->name('products.index');
 
 
 require __DIR__.'/auth.php';

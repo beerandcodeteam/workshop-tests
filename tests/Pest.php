@@ -45,3 +45,18 @@ function something()
 {
     // ..
 }
+
+/*
+|--------------------------------------------------------------------------
+| Helpers
+|--------------------------------------------------------------------------
+|
+*/
+
+function asAdmin(): Tests\TestCase {
+    $user = \App\Models\User::factory()->create([
+        'is_admin' => true,
+    ]);
+
+    return test()->actingAs($user);
+}
